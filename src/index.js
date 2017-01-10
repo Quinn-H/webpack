@@ -1,20 +1,13 @@
 var state = require('./state')
-var wombleList = require('./templates/womble-list.hbs')
-var header = require('./templates/header.hbs')
-var footer = require('./templates/footer.hbs')
+var appTemplate = require('./templates/app.hbs')
+
 
 document.addEventListener('DOMContentLoaded', render)
 
 function render () {
-  var headers = state.getHeader()
   var wombles = state.getState()
-  var footers = state.getFooter()
   var app = document.getElementById('app')
-  app.innerHTML = wombleList({
-    wombles: wombles,
-    headers: headers,
-    footers: footers
-   })
+  app.innerHTML = appTemplate(wombles)
   bindEventListeners(app)
 }
 

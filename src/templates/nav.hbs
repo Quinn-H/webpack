@@ -1,1 +1,5 @@
-<nav>link1 link2 link3</nav>
+<nav>
+  {{#each pages}}
+  <a href="#" class="nav-link" data-target="{{name}}">{{name}}</a>
+  {{/each}}
+</nav>

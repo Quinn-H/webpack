@@ -1,11 +1,43 @@
 module.exports = {
-  getState: getState,
-  setState: setState,
-  getHeader: getHeader,
-  getFooter: getFooter
+  getState: getState
 }
 
-var wombles = [{
+// var wombles = [{
+//   name: 'Orinocco',
+//   email: 'orinocco@wimbledoncommon.net',
+//   details: 'Tin cans',
+//   showingDetails: false
+// }, {
+//   name: 'Tomsk',
+//   email: 'tomsk@wimbledoncommon.net',
+//   details: 'Plastic bags',
+//   showingDetails: false
+// }, {
+//   name: 'Bungo',
+//   email: 'bungo@wimbledoncommon.net',
+//   details: 'Discarded wombat poop',
+//   showingDetails: false
+// }]
+
+var state = {
+  header: {
+    title: 'wombles',
+    subtitle: 'wombles-list'
+  },
+  footer: {
+    copyright: 'All Rights Reserved'
+  },
+  pages: {
+    home: {
+      name: 'home',
+      isActive: true
+    },
+    about: {
+      name: 'about',
+      isActive: false
+    }
+  },
+  wombles: [{
   name: 'Orinocco',
   email: 'orinocco@wimbledoncommon.net',
   details: 'Tin cans',
@@ -21,30 +53,18 @@ var wombles = [{
   details: 'Discarded wombat poop',
   showingDetails: false
 }]
-
-
-var headers = {
-  title: 'Home',
-  subtitle: 'wombles list'
-}
-
-
-var footers = {
-  copyright: 'All Rights Reserved.'
 }
 
 function getState () {
-  return wombles
+  return state
 }
 
-function setState (state) {
-  wombles = state
+function updateWombles (wombles) {
+  state.wombles = wombles
 }
 
-function getHeader () {
-  return headers
-}
-
-function getFooter () {
-  return footers
+function makePageActive (pageName) {
+  Object.getOwnPropertyNames(state.pages).forEach(function (page) {
+    state.pages[page].isActive = page === pageName
+  })
 }
