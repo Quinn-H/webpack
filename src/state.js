@@ -1,6 +1,8 @@
 module.exports = {
   getState: getState,
-  setState: setState
+  setState: setState,
+  getHeader: getHeader,
+  getFooter: getFooter
 }
 
 var wombles = [{
@@ -20,10 +22,29 @@ var wombles = [{
   showingDetails: false
 }]
 
+
+var headers = {
+  title: 'Home',
+  subtitle: 'wombles list'
+}
+
+
+var footers = {
+  copyright: 'All Rights Reserved.'
+}
+
 function getState () {
   return wombles
 }
 
 function setState (state) {
   wombles = state
+}
+
+function getHeader () {
+  return headers
+}
+
+function getFooter () {
+  return footers
 }
